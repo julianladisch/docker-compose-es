@@ -1,0 +1,12 @@
+name: Up
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  up:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker-compose up > /tmp/log &
+      - run: sleep 30
+      - run: cat /tmp/log
